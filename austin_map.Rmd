@@ -1,0 +1,28 @@
+---
+title: "Austin Trip"
+author: "ill-cam"
+date: "December 31, 2016"
+output: html_document
+---
+##My Trip to Austin, Texas - December 2016
+
+This map highlights places I have visited this week while visiting a friend in Austin, Texas. 
+
+```{r, echo=FALSE, warning=FALSE, message = FALSE}
+library(leaflet)
+spots_loc <- data.frame(lat=c(30.2440068,30.3144223,30.5685334,30.2739786,30.2564916,30.5065789,30.3129196),
+                    lng=c(-97.9542181,-98.0224535,-98.2826922,-97.7217777,-97.7041476,-98.8211191,-97.9482879))
+spots_sites <- c(
+  "<a href='http://www.austintexas.gov/airport'>Austin-Bergstrom International Airport</a>",
+  "<a href='http://www.beecavetexas.com/residents/parks-recreation-348'>City of Bee Cave Central Park</a>",
+  "<a href='http://www.bluebonnetcafe.net/'>Blue Bonnet Cafe</a>",
+  "<a href='https://www.yelp.com/biz/king-bee-lounge-austin-2'>King Bee Lounge</a>",
+  "<a href='https://www.facebook.com/hardlucklounge/'>Hard Luck Lounge</a>",
+  "<a href='http://tpwd.texas.gov/state-parks/enchanted-rock'>Enchanted Rock</a>",
+  "<a href='http://www.discounttire.com/en/store/tx/bee-cave/s/1713'>Discount Tire Store</a>"
+)
+spots_loc %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(popup = spots_sites)
+```
